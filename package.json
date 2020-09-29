@@ -1,5 +1,5 @@
 {
-  "name": "update-project-version",
+  "name": "update-package-version",
   "version": "0.0.1",
   "description": "a simple tool to update your project's version in all files that require an update",
   "main": "index.js",
