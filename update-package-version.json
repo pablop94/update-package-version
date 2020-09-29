@@ -1,0 +1,17 @@
+[
+  {
+    "type": "override-json",
+    "params": [
+      "./package.json",
+      "version"
+    ]
+  },
+  {
+    "type": "replace",
+    "params": [
+      "./README.md",
+      "https://img.shields.io/badge/version-[#CURRENT_VERSION]-informational.svg",
+      "https://img.shields.io/badge/version-[#NEW_VERSION]-informational.svg"
+    ]
+  }
+]
