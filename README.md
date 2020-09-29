@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/badge/version-0.0.2-informational.svg)](https://github.com/pablop94/update-package-version)
+[![version](https://img.shields.io/badge/version-0.0.3-informational.svg)](https://github.com/pablop94/update-package-version)
 
 # Update Package Version
 

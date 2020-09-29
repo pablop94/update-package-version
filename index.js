@@ -1,11 +1,11 @@
 const fs = require('fs')
 const path = require('path');
 const mappings = require('./src/mappings')
-
+const cwd = process.cwd()
 
 let first_parameter = process.argv[2]
 
-const PACKAGE_JSON = './package.json'
+const PACKAGE_JSON = path.join(cwd,'/package.json')
 const PACKAGE_JSON_CONTENT = JSON.parse(fs.readFileSync(PACKAGE_JSON).toString())
 const currentVersion = PACKAGE_JSON_CONTENT.version
 
@@ -46,7 +46,6 @@ function update_version(new_version) {
   if (!new_version.match(/^[0-9]+\.[0-9]+\.[0-9]+$/g)) {
     throw new Error(`Invalid version: ${new_version}`)
   }
-  const cwd = process.cwd()
   
   const hooks = JSON.parse(fs.readFileSync(path.join(cwd,'/update-package-version.json')).toString())
   hooks.forEach(hook => mappings[hook.type](...hook.params)(currentVersion, new_version))
