@@ -12,26 +12,6 @@ Of course, you can do it by your own, it's up to you.
 ## Installation
 You can use npx, see below for details.
 
-Otherwise, you can install it as a dev dependency.
-```
-npm install update-package-version --save-dev
-```
-
-### Include a command in your package.json file (skip if using npx)
-```
-...
-  "scripts": {
-    ...
-    "update-version": "node node_modules/update-package-version/index.js"
-    ...
-  },
-...
-```
-Then run it with
-```
-npm run update-version params
-```
-
 ## Configuration
 Place a file in your project's root directory called update-package-version.json
 This file will be read by the command and will update the specified files with the specified configuration:
@@ -62,35 +42,35 @@ The README.md will search for the value 'https://img.shields.io/badge/version-[#
 
 *Note that the README.md replacement will be performed using the varibles [#CURRENT_VERSION] and [#NEW_VERSION]. This is to avoid changing the configuration on every version update*
 
-### Examples of use
+## Examples of use
 ```
 # Will update your project's version to 1.2.3
-npx update-package-version update 1.2.3
+npx update-package-version 1.2.3
 ```
 
 ```
 # Will increase your project's patch version in one
-npx update-package-version update patch
+npx update-package-version patch
 ```
 
 ```
 # Will increase your project's minor version in one
-npx update-package-version update minor
+npx update-package-version minor
 ```
 
 ```
 # Will increase your project's major version in one
-npx update-package-version update major
+npx update-package-version major
 ```
 
 ```
 # Will return your project's current version
-npx update-package-version update current
+npx update-package-version current
 ```
 
 ```
 # Will show the available commands
-npx update-package-version update help
+npx update-package-version help
 ```
 
 #### Contact me if you have any idea or if you encounter an issue
