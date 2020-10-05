@@ -1,6 +1,6 @@
 {
   "name": "update-package-version",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "a simple tool to update your project's version in all files that require an update",
   "main": "index.js",
   "scripts": {
