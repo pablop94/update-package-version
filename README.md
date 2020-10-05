@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/badge/version-0.0.3-informational.svg)](https://github.com/pablop94/update-package-version)
+[![version](https://img.shields.io/badge/version-0.1.0-informational.svg)](https://github.com/pablop94/update-package-version)
 
 # Update Package Version
 
@@ -10,11 +10,14 @@ Sometimes you need to include your project's version in some files and people te
 Of course, you can do it by your own, it's up to you.
 
 ## Installation
+You can use npx, see below for details.
+
+Otherwise, you can install it as a dev dependency.
 ```
-npm install update-package-version
+npm install update-package-version --save-dev
 ```
 
-### Include a command in your package.json file
+### Include a command in your package.json file (skip if using npx)
 ```
 ...
   "scripts": {
@@ -29,9 +32,9 @@ Then run it with
 npm run update-version params
 ```
 
-### Configuration
+## Configuration
 Place a file in your project's root directory called update-package-version.json
-This file will be read by the commands and will update the specified files with the specified configuration:
+This file will be read by the command and will update the specified files with the specified configuration:
 
 The file consists of a list of files and methods to update:
 ```
@@ -54,7 +57,7 @@ The file consists of a list of files and methods to update:
 ]
 ```
 This configuration will update two files: ./package.json and ./README.md
-The package.json file will be updated as a new json, changing the property passed as the second element of params list (version)
+The package.json file will be updated as a new json, changing the property passed as the second element of params list ("version")
 The README.md will search for the value 'https://img.shields.io/badge/version-[#CURRENT_VERSION]-informational.svg' and then replace it with the value 'https://img.shields.io/badge/version-[#NEW_VERSION]-informational.svg'
 
 *Note that the README.md replacement will be performed using the varibles [#CURRENT_VERSION] and [#NEW_VERSION]. This is to avoid changing the configuration on every version update*
@@ -62,32 +65,32 @@ The README.md will search for the value 'https://img.shields.io/badge/version-[#
 ### Examples of use
 ```
 # Will update your project's version to 1.2.3
-npm run update-version 1.2.3
+npx update-package-version update 1.2.3
 ```
 
 ```
 # Will increase your project's patch version in one
-npm run update-version patch
+npx update-package-version update patch
 ```
 
 ```
 # Will increase your project's minor version in one
-npm run update-version minor
+npx update-package-version update minor
 ```
 
 ```
 # Will increase your project's major version in one
-npm run update-version major
+npx update-package-version update major
 ```
 
 ```
 # Will return your project's current version
-npm run update-version current
+npx update-package-version update current
 ```
 
 ```
 # Will show the available commands
-npm run update-version help
+npx update-package-version update help
 ```
 
 #### Contact me if you have any idea or if you encounter an issue

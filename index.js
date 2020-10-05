@@ -1,16 +1,17 @@
+#!/usr/bin/env node
+
 const fs = require('fs')
 const path = require('path');
 const mappings = require('./src/mappings')
 const cwd = process.cwd()
 
-let first_parameter = process.argv[2]
-
-const PACKAGE_JSON = path.join(cwd,'/package.json')
+const [, , parameter] = process.argv
+const PACKAGE_JSON = path.join(cwd, '/package.json')
 const PACKAGE_JSON_CONTENT = JSON.parse(fs.readFileSync(PACKAGE_JSON).toString())
 const currentVersion = PACKAGE_JSON_CONTENT.version
 
 
-switch (first_parameter) {
+switch (parameter) {
   case "help":
     console.log("\x1b[36m")
     console.log('Example usage:')
@@ -34,10 +35,21 @@ switch (first_parameter) {
     update_version(get_new_version(currentVersion, 2))
     break
   default:
-    update_version(first_parameter)
+    if (parameter !== undefined)
+      update_version(parameter)
+    else
+      throw new Error('Missing parameter. Use help to see a list of options.')
     break;
 }
 
+/**
+ * Returns a new string representing the version, adding one to the given index (major, minor or patch) and replacing the greater indexes with 0.
+ * Given 1.2.3 with index 2 will return 1.2.4
+ * Given 1.2.3 with index 1 will return 1.3.0
+ * Given 1.2.3 with index 0 will return 2.0.0
+ * @param {String} currentVersion The current version
+ * @param {Number} index The version to be updated, can be 0, 1 or 2 meaning major, minor or patch respectively
+ */
 function get_new_version(currentVersion, index) {
   return currentVersion.split('.').map((part, i) => i === index ? parseInt(part) + 1 : i > index ? "0" : part).join('.')
 }
@@ -46,7 +58,7 @@ function update_version(new_version) {
   if (!new_version.match(/^[0-9]+\.[0-9]+\.[0-9]+$/g)) {
     throw new Error(`Invalid version: ${new_version}`)
   }
-  
-  const hooks = JSON.parse(fs.readFileSync(path.join(cwd,'/update-package-version.json')).toString())
+
+  const hooks = JSON.parse(fs.readFileSync(path.join(cwd, '/update-package-version.json')).toString())
   hooks.forEach(hook => mappings[hook.type](...hook.params)(currentVersion, new_version))
 }
