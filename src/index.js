@@ -50,11 +50,11 @@ function update_version(new_version) {
 
   try {
     const hooks = JSON.parse(fs.readFileSync(path.join(cwd, '/update-package-version.json')).toString())
+    hooks.forEach(hook => mappings[hook.type](...hook.params)(currentVersion, new_version))
   }
   catch(e){
     throw new Error('Not found configuration file: update-package-version.json')
   }
-  hooks.forEach(hook => mappings[hook.type](...hook.params)(currentVersion, new_version))
 }
 
 function _is_valid_version(version) {
