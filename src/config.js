@@ -3,11 +3,12 @@ const path = require('path')
 const readline = require("readline")
 
 module.exports.write_default_config = function () {
+  const cwd = process.cwd()
+
   const CONFIG_FILE_NAME = 'update-package-version.json'
-  fs.readFile('./src/default-config.json', 'utf8', (err, data) => {
+  fs.readFile(path.join(__dirname, '/default-config.json'), 'utf8', (err, data) => {
     if (err)
       throw err
-    const cwd = process.cwd()
     const new_config_file = path.join(cwd, `/${CONFIG_FILE_NAME}`)
     fs.writeFile(new_config_file, data, (err) => {
       if (err)

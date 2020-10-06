@@ -53,7 +53,7 @@ function update_version(new_version) {
     hooks.forEach(hook => mappings[hook.type](...hook.params)(currentVersion, new_version))
   }
   catch(e){
-    throw new Error('Not found configuration file: update-package-version.json')
+    throw new Error('Not found configuration file: update-package-version.json. Run npx update-package-version config to create one.')
   }
 }
 
