@@ -73,4 +73,9 @@ npx update-package-version current
 npx update-package-version help
 ```
 
+```
+# Will configure a minimal file to make it work.
+npx update-package-version config
+```
+
 #### Contact me if you have any idea or if you encounter an issue
