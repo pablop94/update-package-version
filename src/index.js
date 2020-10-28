@@ -11,12 +11,12 @@ const currentVersion = PACKAGE_JSON_CONTENT.version
 function show_help(currentVersion) {
   console.log("\x1b[36m")
   console.log('Example usage:')
-  console.log(`npx update-package-version ${currentVersion}`, "\x1b[32m", "Updates the project's version to the passed one.", "\x1b[36m")
-  console.log('npx update-package-version patch', "\x1b[32m", 'Increments one the patch version (x.y.z+1).', "\x1b[36m")
-  console.log('npx update-package-version minor', "\x1b[32m", 'Increments one the minor version (x.y+1.z).', "\x1b[36m")
-  console.log('npx update-package-version major', "\x1b[32m", 'Increments one the major version (x+1.y.z).', "\x1b[36m")
-  console.log('npx update-package-version current', "\x1b[32m", 'Returns the current version number from package.json file.', "\x1b[36m")
-  console.log('npx update-package-version config', "\x1b[32m", 'Configures the file needed to work, you can edit it with your own configuration.', "\x1b[36m")
+  console.log(`npx update-version ${currentVersion}`, "\x1b[32m", "Updates the project's version to the passed one.", "\x1b[36m")
+  console.log('npx update-version patch', "\x1b[32m", 'Increments one the patch version (x.y.z+1).', "\x1b[36m")
+  console.log('npx update-version minor', "\x1b[32m", 'Increments one the minor version (x.y+1.z).', "\x1b[36m")
+  console.log('npx update-version major', "\x1b[32m", 'Increments one the major version (x+1.y.z).', "\x1b[36m")
+  console.log('npx update-version current', "\x1b[32m", 'Returns the current version number from package.json file.', "\x1b[36m")
+  console.log('npx update-version config', "\x1b[32m", 'Configures the file needed to work, you can edit it with your own configuration.', "\x1b[36m")
 }
 
 function update_major_version(currentVersion) {
@@ -49,11 +49,11 @@ function update_version(new_version) {
   }
 
   try {
-    const hooks = JSON.parse(fs.readFileSync(path.join(cwd, '/update-package-version.json')).toString())
+    const hooks = JSON.parse(fs.readFileSync(path.join(cwd, '/update-version.json')).toString())
     hooks.forEach(hook => mappings[hook.type](...hook.params)(currentVersion, new_version))
   }
   catch(e){
-    throw new Error('Not found configuration file: update-package-version.json. Run npx update-package-version config to create one.')
+    throw new Error('Not found configuration file: update-version.json. Run npx update-version config to create one.')
   }
 }
 

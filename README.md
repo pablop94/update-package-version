@@ -1,6 +1,6 @@
-[![version](https://img.shields.io/badge/version-0.2.1-informational.svg)](https://github.com/pablop94/update-package-version)
+[![version](https://img.shields.io/badge/version-0.2.1-informational.svg)](https://github.com/pablop94/update-version)
 
-# Update Package Version
+# Update Version
 
 A package that will help you and your team members(if any) to replace in all needed files your project's version. 
 
@@ -13,7 +13,7 @@ Of course, you can do it by your own, it's up to you.
 You can use npx, see below for details.
 
 ## Configuration
-Place a file in your project's root directory called update-package-version.json
+Place a file in your project's root directory called update-version.json
 This file will be read by the command and will update the specified files with the specified configuration:
 
 The file consists of a list of files and methods to update:
@@ -45,37 +45,37 @@ The README.md will search for the value 'https://img.shields.io/badge/version-[#
 ## Examples of use
 ```
 # Will update your project's version to 1.2.3
-npx update-package-version 1.2.3
+npx update-version 1.2.3
 ```
 
 ```
 # Will increase your project's patch version in one
-npx update-package-version patch
+npx update-version patch
 ```
 
 ```
 # Will increase your project's minor version in one
-npx update-package-version minor
+npx update-version minor
 ```
 
 ```
 # Will increase your project's major version in one
-npx update-package-version major
+npx update-version major
 ```
 
 ```
 # Will return your project's current version
-npx update-package-version current
+npx update-version current
 ```
 
 ```
 # Will show the available commands
-npx update-package-version help
+npx update-version help
 ```
 
 ```
 # Will configure a minimal file to make it work.
-npx update-package-version config
+npx update-version config
 ```
 
 #### Contact me if you have any idea or if you encounter an issue
