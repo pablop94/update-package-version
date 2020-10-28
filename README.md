@@ -1,4 +1,4 @@
-[![version](https://img.shields.io/badge/version-0.2.1-informational.svg)](https://github.com/pablop94/update-version)
+[![version](https://img.shields.io/badge/version-0.2.1-informational.svg)](https://github.com/pablop94/modify-version)
 
 # Update Version
 
@@ -13,7 +13,7 @@ Of course, you can do it by your own, it's up to you.
 You can use npx, see below for details.
 
 ## Configuration
-Place a file in your project's root directory called update-version.json
+Place a file in your project's root directory called modify-version.json
 This file will be read by the command and will update the specified files with the specified configuration:
 
 The file consists of a list of files and methods to update:
@@ -45,37 +45,37 @@ The README.md will search for the value 'https://img.shields.io/badge/version-[#
 ## Examples of use
 ```
 # Will update your project's version to 1.2.3
-npx update-version 1.2.3
+npx modify-version 1.2.3
 ```
 
 ```
 # Will increase your project's patch version in one
-npx update-version patch
+npx modify-version patch
 ```
 
 ```
 # Will increase your project's minor version in one
-npx update-version minor
+npx modify-version minor
 ```
 
 ```
 # Will increase your project's major version in one
-npx update-version major
+npx modify-version major
 ```
 
 ```
 # Will return your project's current version
-npx update-version current
+npx modify-version current
 ```
 
 ```
 # Will show the available commands
-npx update-version help
+npx modify-version help
 ```
 
 ```
 # Will configure a minimal file to make it work.
-npx update-version config
+npx modify-version config
 ```
 
 #### Contact me if you have any idea or if you encounter an issue
