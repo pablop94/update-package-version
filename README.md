@@ -1,6 +1,6 @@
 [![version](https://img.shields.io/badge/version-0.2.1-informational.svg)](https://github.com/pablop94/update-package-version)
 
-# Update Version
+# Update Package Version
 
 A package that will help you and your team members(if any) to replace in all needed files your project's version. 
 
